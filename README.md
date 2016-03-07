@@ -38,7 +38,7 @@ significantly degrading the performance of the classifier system. An initial set
 features that were somewhat randomly selected will be provided as input. Then in each iteration
 CrossOver and Mutation is performed in the hope that it will yield fitter members with time.
 
-Performance Evaluation by using MLP:
+###Performance Evaluation by using MLP:
 
 The performance of each of the selected feature subsets is measured by invoking a fitness evaluation
 function. It is given the initial randomly generated input(population member). It will then perform
@@ -47,7 +47,7 @@ pass the dimensionally reduced data binary array to the MLP. In the training set
 output set representing positive and negative examples will also be included for which classification
 is to be performed.
 
-###Detailed system description:
+##Detailed system description:
 
 Since each feature used as part of a classification procedure can increase the cost and running time of
 a recognition system we use try to design and implement systems with small feature sets. At the
@@ -58,9 +58,11 @@ Genetic algorithms (GAS) are best known for their ability to efficiently search 
 which little is known a priori. This is accomplished by their ability to exploit accumulating
 information about an initially unknown search space in order to bias subsequent search into
 promising subspaces.
+
 Genetic algorithms are a natural approach for performing subset selection. A feature subset is
 represented as a binary Array, with the setting of each member of the array indicating whether the
 corresponding feature is used or discarded.
+
 A collection of such binary arrays is called a population. Initially, a random population is created,
 which represents different points in the search space. An objective and fitness function is associated
 with each member of the population that represents the degree of Fitness(goodness) of that particular
@@ -80,7 +82,17 @@ corresponding to nonselected features are set to 0. The fitness function include
 ###Fitness Evaluation:
 
 In order to evaluate the fitness of an individual, the selected feature subset is
-fed into a neural network classifier of fixed architecture. The transformed patterns are evaluated based upon both their dimensionality, and the classification
-accuracy.  The accuracy obtained is then returned to the GA as a measure of the quality of the transformation matrix used to obtain the set of transformed patterns. Using this
+fed into a neural network classifier of fixed architecture. The transformed patterns are evaluated based upon both their dimensionality, and the classification accuracy.  The accuracy obtained is then returned to the GA as a measure of the quality of the transformation matrix used to obtain the set of transformed patterns. Using this
 information, the GA searches for a transformation that minimizes the dimensionality of the transformed patterns
 while maximizing classification accuracy.
+
+The performance of a feature subset is measured by applying the evaluation procedure given in equation 1.
+Fitness = C * FS + (1-C) * FE …Eq. 1
+Where:
+FS = (NumIP-MinIP) / (MaxIP-MinIP) * 100;
+FE = Patterns incorrectly classified (Percent);
+C = Pressure factor toward input reduction (0..1)
+
+###Member Selection:
+
+Tournament selection is used to implement the proportional selection strategy.
