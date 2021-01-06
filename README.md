@@ -4,7 +4,7 @@
 
 Pattern recognition is an interesting CS problem that requires that objects be described in terms of a
 set of measurable features. The selection and quality of the features representing each pattern have a
-considerable bearing on the success of subsequent pattern classification. In this assignment we are
+considerable bearing on the success of subsequent pattern classification. In this project we are
 given MNIST data(binary images of numeric digits) and we will construct a Hybrid CI system that
 performs PCA on the given dataset to reduce the input dimensionality of the data.
 
@@ -14,8 +14,7 @@ dimensionality reduction is well suited to formulation as an optimization proble
 dimensional input patterns, the task of the GA is to find a transformed set of patterns in an 
 dimensional space that maximizes a set of optimization criteria.
 
-Hence, in this project we will be using Genetic Algorithm (constructed in previous assignment of
-this course) to perform dimensionality reduction. MLP is used a classifier and GA will rely on this
+Hence, in this project we will be using Genetic Algorithm to perform dimensionality reduction. MLP is used a classifier and GA will rely on this
 classifier to evaluate its performance. 
 
 ## Summary of Contruction
